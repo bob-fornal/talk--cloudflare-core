@@ -1,28 +1,18 @@
 
-export function getCookie(request, name) {
-  const cookieString = request.headers.get('Cookie') || ''
-  const cookies = cookieString.split(';').map(cookie => cookie.trim())
-  const cookie = cookies.find(cookie => cookie.startsWith(`${name}=`))
-  return cookie ? cookie.split('=')[1] : null
-}
-
 export function handleCookie(request, response, hostname) {
-  const cookieName = 'clientIPAddress';
   const cookieDomain = hostname;
-  const cookieValue = request.headers.get('CF-Connecting-IP');
-  const cookieExpiration = 86400; // 1 day in seconds
+  const cookieExpiration = 86400;
   
-  // Check if the cookie exists
-  const cookie = getCookie(request, cookieName);
-  
-  if (!cookie && cookieValue) {
-    // Create a new response with the Set-Cookie header
-    response = new Response(response.body, response);
-    response.headers.set(
-      'Set-Cookie',
-      `${cookieName}=${cookieValue}; Max-Age=${cookieExpiration};Domain=${cookieDomain};`,
-    );
-  }
+  const city = request.cf.city || 'not captured';
+  const state = request.cf.region || request.cf.regionCode || 'not captured';
+  const zipcode = request.cf.postalCode || 'not captured';
+  const cookieValue = JSON.stringify({ city, state, zipcode });
+
+  response = new Response(response.body, response);
+  response.headers.set(
+    'Set-Cookie',
+    `CloudflareDemo=${cookieValue}; Max-Age=${cookieExpiration};Domain=${cookieDomain};`,
+  );
 
   return response;
 }
