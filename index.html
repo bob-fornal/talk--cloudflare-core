@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>Cloudflare Talk</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow" />
+    
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="core-style.css">
+  </head>
+  <body>
+    <div class="global-wrapper">
+      <div class="global-header">Dashboard: Cloudflare Talk</div>
+
+      <div class="core-functionality">
+        <a class="core-btn" id="register-button" href="/pages/register">Register User</a>
+        <a class="core-btn hidden" id="userid-button" href="#">User's ID</a>
+        <a class="core-btn" href="/pages/page/?page=EMPTY">Page: EMPTY</a>
+        <span class="core-bold">/</span>
+        <a class="core-btn" id="cookie" href="/pages/cookie">Cookie</a>
+        <a class="core-btn" id="redirect" href="/pages/redirect">Redirect</a>
+        <a class="core-btn" id="split-test" href="/pages/split-test">Split-Test</a>
+      </div>
+
+      <div class="core-functionality">
+      </div>
+
+      <div class="form-functionality core-align-right">
+        <button class="core-btn" id="refresh-upper">Refresh</a>
+      </div>
+
+      <div id="attach-active-userids">
+        <div class="core-note core-margin-bottom" id="issue">No Records Listed (refresh).</div>
+      </div>
+
+      <div class="form-functionality core-align-right">
+        <button class="core-btn" id="refresh-lower">Refresh</a>
+      </div>
+
+      <div class="core-footer-information">
+        <div class="core-item">Repository: <a href="https://github.com/bob-fornal/talk--cloudflare-core">https://github.com/bob-fornal/talk--cloudflare-core</a></div>
+      </div>
+    </div>
+
+    <script src="/tools/axios/axios.min.js"></script>
+    <script src="/tools/api-calls.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

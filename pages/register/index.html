@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>Cloudflare Talk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/core-style.css">
+  </head>
+  <body>
+    <div class="global-wrapper">
+      <div class="global-header">Register</div>
+
+      <a class="core-btn" href="/">Cancel</a>
+
+      <div class="core-form">
+        <div class="core-item username">
+          <label for="userid">User ID</label>
+          <input type="text" name="userid" id="userid" required placeholder="i.e. talk-content">
+        </div>
+
+        <div class="core-item email">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" required placeholder="i.e. bob@code-squid.com">
+        </div>
+
+        <div id="images" class="core-item image-list"></div>
+
+        <div class="core-item banner-text">
+          <label for="banner-text">Banner Text</label>
+          <input type="text" name="banner-text" id="banner-text" required placeholder="i.e. This is exciting!">
+        </div>
+
+        <div class="form-functionality core-align-right">
+          <button class="core-btn" id="save-button">Save</a>
+        </div>
+
+        <div id="saving" class="core-issue hidden">Saving ...</div>
+      </div>
+    </div>
+
+    <script src="/tools/axios/axios.min.js"></script>
+    <script src="/tools/api-calls.js"></script>
+    <script src="/pages/register/register.js"></script>
+    <script src="/pages/images.js"></script>
+    <script>
+      const register = new RegisterClass();
+
+      const imageHandler = new ImageClass();
+      const ids = imageHandler.placeImages('images');
+      handleImageSelection({ target: { id: ids[0] }});
+
+      function handleImageSelection(event) {
+        const selectedImage = imageHandler.selectImage(ids, event.target.id);
+        register.selectImage(selectedImage);
+      }
+
+      ids.forEach((id) => {
+        const innerImage = document.getElementById(id);
+        innerImage.addEventListener('click', handleImageSelection);
+      });
+    </script>
+  </body>
+</html>

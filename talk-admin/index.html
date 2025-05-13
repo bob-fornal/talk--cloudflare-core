@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>Cloudflare Talk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/core-style.css">
+  </head>
+  <body>
+    <div class="global-wrapper show-data-wrappers">
+      <div class="global-header">Talk Admin Page</div>
+
+      <a class="core-btn" href="/">Return</a>
+
+      <div class="core-form">
+        <div class="core-item core-checkbox">
+          <label class="container">
+            <span>Redirect Enabled</span>
+            <input type="checkbox" id="redirect-enabled">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="core-item core-checkbox">
+          <label class="container">
+            <span>Split Test Enabled</span>
+            <input type="checkbox" id="split-test-enabled">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="form-functionality core-align-right">
+          <a class="core-btn" href="/">Cancel</a>
+          <button class="core-btn" id="save-button">Save</a>
+        </div>
+
+        <div class="core-qr-wrapper">
+          <div class="core-qr-title" id="qr-title-top"></div>
+          <div class="core-qr-code" id="qr-code" ></div>
+          <div class="core-qr-title" id="qr-title-bottom"></div>
+        </div>
+
+        <div id="saving" class="core-issue hidden">Saving ...</div>
+      </div>
+    </div>
+
+    <script src="/tools/axios/axios.min.js"></script>
+    <script src="/tools/qr-code/qrcode.min.js"></script>
+    <script src="/tools/api-calls.js"></script>
+    <script src="/talk-admin/talk-admin.js"></script>
+    <script>
+      const admin = new TalkAdminClass();
+
+      async function getData() {
+        const data = await admin.getData();
+        admin.placeData(data);
+      }
+      getData();
+
+      const qrTitleElementTop = document.getElementById('qr-title-top');
+      const qrTitleElementBottom = document.getElementById('qr-title-bottom');
+      const qrTitle = window.location.protocol + '//' + window.location.host;
+      qrTitleElementTop.innerText = qrTitle;
+      qrTitleElementBottom.innerText = qrTitle;
+
+      var qrCode = new QRCode(document.getElementById("qr-code"), {
+        width: 400,
+        height: 400
+      });
+      qrCode.makeCode(qrTitle);
+
+    </script>
+  </body>
+</html>

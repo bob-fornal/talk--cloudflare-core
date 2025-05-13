@@ -1,0 +1,233 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.global-wrapper {
+  margin: 1em auto;
+  padding: 1em;
+  max-width: 45em;
+  background-color: silver;
+
+  .hidden {
+    display: none !important;
+  }
+
+  .core-functionality {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  .core-margin-bottom {
+    margin-bottom: 1em !important;
+  }
+
+  .core-bold {
+    font-weight: bold;
+  }
+
+  .global-header {
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  .core-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.25em 1em;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    line-height: 1.8em;
+    border: none;
+    font-size: 1em;
+
+    &:not([disabled=true]) {
+      background-color: #4E9CAF;
+      color: white;
+      cursor: pointer;
+    }
+    &[disabled=true] {
+      background-color: #8EDCEF;
+      color: black;
+      cursor: default;
+    }
+  }
+
+  .core-table {
+    width: calc(100% - 2em);
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 1em;
+      
+    th, td {
+      padding: 0.5em 1em;
+      border: 1px solid black;
+    }
+  }
+
+  .core-align-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 1em;
+  }
+
+  .core-form {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .core-item {
+      width: 100%;
+    }
+
+    input[type=text], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  }
+
+  .core-item {
+
+    &.image-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1em;
+
+      .core-image {
+        box-sizing: border-box;
+        width: calc(50% - 8px);
+        cursor: pointer;
+        padding: 4px;
+
+        &:not(.selected) {
+          border: 2px solid transparent;
+        }
+        &.selected {
+          border: 2px solid yellow;
+        }
+      }
+    }
+  }
+
+  
+  .core-issue,
+  .core-note {
+    margin: 1em 1em 0 1em;
+    padding: 1em 2em;
+    font-weight: bold;
+  }
+  .core-note {
+    background-color: #009944;
+    color: white;
+  }
+  .core-issue {
+    background-color: #ff6363;
+    color: white;
+  }
+
+  .core-checkbox {
+    margin-left: 1em;
+
+    .container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      user-select: none;
+
+      & input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked ~ .checkmark {
+          background-color: #2196F3;
+
+          &:after {
+            display: block;
+          }
+        }
+      }
+      &:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+    }
+    
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+
+      &:after {
+        content: "";
+        position: absolute;
+        display: none;
+
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.core-qr-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .core-qr-title {
+    display: inline-block;
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+  }
+  .core-qr-code {
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    margin-top: 1em;
+  }
+}
+
+.core-footer-information {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+
+  .core-item {
+    font-weight: bold;
+    margin-top: 1em;
+  }
+}

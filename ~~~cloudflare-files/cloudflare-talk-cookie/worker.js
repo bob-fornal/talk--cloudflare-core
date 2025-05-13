@@ -1,0 +1,11 @@
+import { handleCookie } from './functionality_core.js';
+
+export default {
+  async fetch(request, env, ctx) {
+    const urlObj = new URL(request.url);
+    const domain = urlObj.hostname;
+    const response = await fetch(request);
+    const cookieResponse = handleCookie(request, response, domain);
+    return cookieResponse;
+  },
+};

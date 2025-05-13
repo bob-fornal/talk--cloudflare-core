@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Cloudflare Talk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/core-style.css">
+    <link rel="stylesheet" href="/pages/page/page.css">
+    <script src="/pages/page/page.js"></script>
+  </head>
+  <body>
+    <div class="global-wrapper show-data-wrappers">
+      <div class="global-header">Page</div>
+
+      <a class="core-btn" href="/">Back</a>
+
+      <div class="core-issue hidden" id="issue">Issue: User ID Not Found.</div>
+
+      <table class="core-table">
+        <thead>
+          <tr>
+            <th>Data Point</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>User ID</td>
+            <td><span data-matcher="userid">[data-matcher = "userid"]</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="header">
+        <div class="header-image">
+          <div data-matcher="image-path" class="image-placeholder">[data-matcher = "image-path"]</div>
+          <img data-matcher="image-path" class="image-element hidden">
+        </div>
+        <div data-matcher="header-text" class="header-text">[data-matcher = "header-text"]</div>
+      </div>
+
+      <table class="core-table">
+        <thead>
+          <tr>
+            <th>Data Point</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Email</td>
+            <td><span data-matcher="email">[data-matcher = "email"]</span></td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td><span data-matcher="city">[data-matcher = "city"]</span></td>
+          </tr>
+          <tr>
+            <td>State</td>
+            <td><span data-matcher="state">[data-matcher = "state"]</span></td>
+          </tr>
+          <tr>
+            <td>Zipcode</td>
+            <td><span data-matcher="zipcode">[data-matcher = "zipcode"]</span></td>
+          </tr>
+          <tr>
+            <td>IP Address</td>
+            <td><span data-matcher="ip-address">[data-matcher = "ip-address"]</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <a class="core-btn" href="/">Back</a>
+    </div>
+
+  </body>
+</html>

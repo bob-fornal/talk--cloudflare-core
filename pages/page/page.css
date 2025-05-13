@@ -1,0 +1,36 @@
+.global-wrapper {
+  box-sizing: border-box;
+
+  &.show-data-wrappers [data-matcher] {
+    border: 2px solid yellow;
+  }
+
+  .header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 1em;
+
+    .header-image {
+      height: 196.8px;
+
+      .image-placeholder {
+        height: 100%;
+        padding: 1em;
+        box-sizing: border-box;
+      }
+      .image-element {
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+
+    .header-text {
+      font-weight: bold;
+      color: white;
+      position: absolute;
+      align-self: center;
+    }
+  }
+}
