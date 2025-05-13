@@ -1,4 +1,4 @@
-import { handleCookie } from './assets/functionality_core.js';
+import { handleCookie } from './functionality_core.js';
 
 export default {
   async fetch(request, env, ctx) {
