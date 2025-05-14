@@ -1,28 +1,19 @@
 
-export function doABTest(rootUrl, abOptions, queryString) {
+export function doABTest(abOptions, queryString) {
   const randomPercent = Math.round(Math.random() * 100);
   var percentStep = 0;
 
-  for (var i in abOptions) {
-    let testStep = abOptions[i];
-    percentStep += +testStep.percent || 0; // add value or 0 if value is not set
+  for (let option of abOptions) {
+    percentStep += +option.percent || 0; // add value or 0 if value is not set
 
     if (percentStep === 100 || randomPercent < percentStep) {
-      if (testStep.value.startsWith('https://')) {
-        return do302RedirectForSplitTest(testStep.value, queryString);
-      } else {
-        return do302RedirectForSplitTest(rootUrl + testStep.value, queryString);
-      }
+      return do302RedirectForSplitTest(option.url, queryString);
     }
   }
 
   // If we made it this far, we need to redirect with the last test option...
-  const abOptionsLastValue = abOptions[abOptions.length - 1].value;
-  if (abOptionsLastValue.startsWith('https://')) {
-    return do302RedirectForSplitTest(abOptionsLastValue, queryString);
-  } else {
-    return do302RedirectForSplitTest(rootUrl + abOptionsLastValue, queryString);
-  }
+  const abOptionsLastValue = abOptions[abOptions.length - 1].url;
+  return do302RedirectForSplitTest(abOptionsLastValue, queryString);
 }
 
 export function do302RedirectForSplitTest(redirectTo, queryString = '') {

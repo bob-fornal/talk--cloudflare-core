@@ -8,7 +8,7 @@ export default {
     const params = urlObject.searchParams;
 
     const auth = handleAuth(request, pathname, env);
-    if (typeof auth === Response) {
+    if (auth !== 'pass-through') {
       return auth;
     }
 

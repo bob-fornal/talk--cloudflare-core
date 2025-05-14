@@ -28,12 +28,11 @@ export async function trackAdminKV(adminKeyvault, redirect, splitTest) {
 }
 
 export async function trackSplitTestKV(keyvault, key, redirects) {
-  const result = await keyvault.get(key)
-  if (result === null) return false;
-  if (result.hasOwnProperty('redirects') === true) return false;
+  const dataString = await keyvault.get(key);
+  if (dataString === null) return false;
 
-  const data = JSON.parse(result);
-  data.redirects = JSON.parse(redirects);
-  await keyvault.put(key, JSON.stringify(data));
+  const data = JSON.parse(dataString);
+  const updatedData = { ...data, redirects };
+  await keyvault.put(key, JSON.stringify(updatedData));
   return true;
 }

@@ -34,15 +34,17 @@ export async function handlePostRequest(database, keyvault, adminKeyvault, reque
   if (typeof body === 'string') {
     body = JSON.parse(body);
   }
+  console.log(path);
   
   switch (true) {
-    case path === '/api/post-admin-states':
-      const redirect = body.redirect;
-      const splitTest = body.splitTest;
+    case path === '/api/post-admin-states': {
+        const redirect = body.redirect;
+        const splitTest = body.splitTest;
 
-      await trackAdminKV(adminKeyvault, redirect, splitTest);
-      // ctx.waitUntil(trackAdminKV(adminKeyvault, redirect, splitTest));
-      return new Response('Success', statuses.OK);
+        await trackAdminKV(adminKeyvault, redirect, splitTest);
+        // ctx.waitUntil(trackAdminKV(adminKeyvault, redirect, splitTest));
+        return new Response('Success', statuses.OK);
+      }
     case path === '/api/post-user-data':
       const city = request.cf.city || 'not captured';
       const state = request.cf.region || request.cf.regionCode || 'not captured';
@@ -67,15 +69,16 @@ export async function handlePostRequest(database, keyvault, adminKeyvault, reque
       } else {
         return new Response('Invalid Request - Inner', statuses.BAD_REQUEST);
       }
-    case path === '/api/post-user-split-test':
-      const key = body.key;
-      const redirects = body.redirects;
+    case path === '/api/post-user-split-test': {
+        const key = body.key;
+        const redirects = body.redirects;
 
-      const savedCorrectly = await trackSplitTestKV(keyvault, key, redirects);
-      if (savedCorrectly === true) {
-        return new Response('Success', statuses.OK);  
-      } else {
-        return new Response('User ID not previously saved', statuses.BAD_REQUEST);  
+        const savedCorrectly = await trackSplitTestKV(keyvault, key, redirects);
+        if (savedCorrectly === true) {
+          return new Response('Success', statuses.OK);  
+        } else {
+          return new Response('User ID not previously saved', statuses.BAD_REQUEST);  
+        }
       }
     default:
       return new Response('Invalid Request - Outer', statuses.BAD_REQUEST);
