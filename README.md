@@ -1,6 +1,6 @@
 # Cloudflare Talk
 
-This is code for the Cloudflare Talk Demonstration at [](https://cloudflaretalk.com)
+This is code for the Cloudflare Talk Demonstration at [https://cloudflaretalk.com](https://cloudflaretalk.com)
 
 ## Talk Sections
 
