@@ -10,7 +10,7 @@ body {
 .global-wrapper {
   margin: 1em auto;
   padding: 1em;
-  max-width: 45em;
+  max-width: 26em;
   background-color: silver;
 
   .hidden {
@@ -64,6 +64,7 @@ body {
   }
 
   .core-table {
+    font-size: smaller;
     width: calc(100% - 2em);
     border: 1px solid black;
     border-collapse: collapse;
@@ -227,6 +228,7 @@ body {
   margin-top: 1em;
 
   .core-item {
+    font-size: smaller;
     font-weight: bold;
     margin-top: 1em;
   }
